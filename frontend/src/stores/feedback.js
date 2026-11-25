@@ -1,0 +1,1 @@
+import {ref} from 'vue';export function useFeedback(){const busy=ref(false),error=ref(''),success=ref('');async function run(fn,message=''){if(busy.value)return;busy.value=true;error.value='';success.value='';try{await fn();success.value=message;}catch(e){error.value=e.message||'Request failed.';}finally{busy.value=false;}}return {busy,error,success,run};}
